@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-world-demo
-        image: gcr.io//web-server
+        image: gcr.io/cicd-vog-togke/web-server
         ports:
         - containerPort: 8080
         env:
