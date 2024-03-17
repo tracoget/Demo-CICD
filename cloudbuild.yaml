@@ -1,9 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io//web-server', '.']
+    args: ['build', '-t', 'gcr.io/cicd-vog-togke/web-server', '.']
   # Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io//web-server']
+    args: ['push', 'gcr.io/cicd-vog-togke/web-server']
   # Create release in Google Cloud Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: gcloud
@@ -13,5 +13,5 @@ steps:
         "--delivery-pipeline", "cronus-pipeline",
         "--region", "us-central1",
         "--annotations", "commitId=${REVISION_ID}",
-        "--images", "web-server=gcr.io//web-server"
+        "--images", "web-server=gcr.io/cicd-vog-togke/web-server"
       ]
